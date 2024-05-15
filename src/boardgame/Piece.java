@@ -1,10 +1,15 @@
 package boardgame;
 
 public class Piece {
-  private Position position;
+  protected Position position;
+  private Board board;
 
-  public Piece(Position position) {
-    this.position = position;
+  public Piece(Board board) {
+    this.board = board;
+  }
+
+  protected Board getBoard() {
+    return board;
   }
 
   public boolean[][] possibleMoves() {
@@ -17,13 +22,5 @@ public class Piece {
 
   public boolean isThereAnyPossibleMove() {
     return true;
-  }
-
-  public Position getPosition() {
-    return position;
-  }
-
-  public void setPosition(Position position) {
-    this.position = position;
   }
 }
