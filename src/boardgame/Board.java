@@ -40,6 +40,10 @@ public class Board {
   }
 
   public void placePiece(Piece piece, Position pos) {
+    if (areThereAnyPieces(pos)) {
+      throw new BoardException("This position is already taken.");
+    }
+
     pieces[pos.getRow()][pos.getColumn()] = piece;
     piece.position = pos;
   }
@@ -59,6 +63,10 @@ public class Board {
   }
 
   public boolean areThereAnyPieces(Position pos) {
+    if (!positionExists(pos)) {
+      throw new BoardException("This position does not exist.");
+    }
+
     return pieces[pos.getRow()][pos.getColumn()] != null;
   }
 }
